@@ -97,12 +97,14 @@ public class addressBook {
         // person detail object give to the list
         list.add(personDetail);
         System.out.println("Welcome to the addressbook");
-        System.out.print("Enter the choice 1.add 2.edit");
+        System.out.print("Enter the choice 1.add 2.edit 3.remove");
         int choice=scanner.nextInt();
         switch(choice){
             case 1: addPerson();
                     break;
             case 2: editPersonDetail();
+                    break;
+            case 3: removePersonDetail();
                     break;
         }
 
@@ -184,6 +186,22 @@ public class addressBook {
                 }
             }
         }
+    }
+    /*
+    * removepersondetail method to remove the person data
+     */
+    public static void removePersonDetail(){
+        System.out.print("Enter the name you want to remove through the addressbook");
+        String choice=scanner.next();
+        for(int i=0;i<list.size();i++){
+            if(list.get(i).getFirstName().equals(choice)){
+                list.remove(i);
+            }
+            else{
+                System.out.println("Enter the proper choice");
+            }
+        }
+
     }
 
 }
