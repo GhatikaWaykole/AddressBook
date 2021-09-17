@@ -100,7 +100,7 @@ public class addressBook {
 
     }
     /* addperson method is to take input from the console
-    personDetail given as retun type to the method as there are different type of parameter need to return the method
+    personDetail given as return type to the method as there are different type of parameter need to return the method
      */
     private static personDetail addPerson(){
         System.out.println("Enter the firstname");
