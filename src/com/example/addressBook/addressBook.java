@@ -93,6 +93,18 @@ public class addressBook {
         //creating the persondetail class object to add the person detail
         personDetail personDetail = addPerson();
         // person detail object give to the list
+        boolean isAdd=true;
+        while(isAdd){
+            personDetail personDetail1=addressBook.addPerson();
+            list.add(personDetail1);
+            System.out.println("Want to add other person");
+            System.out.println("Enter 1 or 0");
+            int num=scanner.nextInt();
+            if(num==1)
+            isAdd=true;
+            else
+                isAdd=false;
+        }
         list.add(personDetail);
         for (int i=0;i<list.size();i++){
            addressBook.display(list.get(i)); //display method take the input as list and print the data
