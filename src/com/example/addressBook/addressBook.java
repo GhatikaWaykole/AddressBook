@@ -8,8 +8,8 @@ class personDetail {
     /* creating the constructor of the class
     passing paramter to the constructor
      */
-    public personDetail(String firstName,String lastName,String address,String city,String state,String email, long zip,long phone){
-        this.firstName=firstName;
+    public personDetail(String firstName, String lastName,String address,String city,String state,String email, long zip,long phone){
+        this.firstName = firstName;
         this.lastName=lastName;
         this.address=address;
         this.city=city;
@@ -97,18 +97,21 @@ public class addressBook {
         // person detail object give to the list
         list.add(personDetail);
         System.out.println("Welcome to the addressbook");
-        System.out.print("Enter the choice 1.add 2.edit 3.remove");
-        int choice=scanner.nextInt();
-        switch(choice){
-            case 1: addPerson();
+        int value = 0;
+            System.out.print("Enter the choice 1.add 2.edit 3.remove");
+            int choice = scanner.nextInt();
+            switch (choice) {
+                case 1:
+                    addPerson();
                     break;
-            case 2: editPersonDetail();
+                case 2:
+                    editPersonDetail();
                     break;
-            case 3: removePersonDetail();
+                case 3:
+                    removePersonDetail();
                     break;
+            }
         }
-
-    }
 
     /* addperson method is to take input from the console
     personDetail given as return type to the method as there are different type of parameter need to return the method
