@@ -92,25 +92,31 @@ public class addressBook {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String args[]) {
+        // adresessbook object to give the refrence to method of arralylist
+        addressBook add = new addressBook();
         //creating the persondetail class object to add the person detail
         personDetail personDetail = addPerson();
         // person detail object give to the list
         list.add(personDetail);
         System.out.println("Welcome to the addressbook");
         int value = 0;
+        do {
             System.out.print("Enter the choice 1.add 2.edit 3.remove");
             int choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-                    addPerson();
+                    add.addPerson();
                     break;
                 case 2:
-                    editPersonDetail();
+                    add.editPersonDetail();
                     break;
                 case 3:
-                    removePersonDetail();
+                    add.removePersonDetail();
                     break;
             }
+            System.out.println("Enter the choice to adressbook");
+            value = scanner.nextInt();
+        } while(value == 1);
         }
 
     /* addperson method is to take input from the console
