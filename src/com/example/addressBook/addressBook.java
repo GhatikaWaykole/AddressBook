@@ -52,6 +52,9 @@ public class addressBook {
                     System.out.println("welcome to the view option");
                     addressBook.viewByOption(addressBookMap);
                 case 6:
+                    System.out.println("welcome to the couter");
+                    addressBook.countByOption();
+                case 7:
                     scanner.close();// for closing the programme
                     return;
                 default:
