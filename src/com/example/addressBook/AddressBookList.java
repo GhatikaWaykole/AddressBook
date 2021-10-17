@@ -1,11 +1,12 @@
 package com.example.addressBook;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class AddressBookList {
     public static Scanner scanner = new Scanner(System.in);
-    public ArrayList<PersonDetail> contactList = new ArrayList<>();
+    public static ArrayList<PersonDetail> contactList = new ArrayList<>();
     public static Map<String, PersonDetail> nameHashMap = new HashMap<String, PersonDetail>();
     public static Map<String, PersonDetail> cityHashMap = new HashMap<String, PersonDetail>();
     public static Map<String, PersonDetail> stateHashMap = new HashMap<String, PersonDetail>();
@@ -48,7 +49,13 @@ public class AddressBookList {
     public static void viewByState(Map<String, PersonDetail> stateHashMap) {
         stateHashMap.entrySet().stream().forEach(e -> System.out.println(e.getKey() + "=" + e.getValue().toString()));
     }
+    public static List<PersonDetail> sortBy(Function<? super PersonDetail, ? extends String> key) {
+        return contactList.stream().sorted(Comparator.comparing(key)).collect(Collectors.toList());
+    }
 
+    public List<PersonDetail> sortByZip(Function<? super PersonDetail, ? extends Long> key) {
+        return contactList.stream().sorted(Comparator.comparing(key)).collect(Collectors.toList());
+    }
     // method for edit contact
     public boolean editContact(PersonDetail current, PersonDetail edit) {
         if (!contactList.contains(current))
@@ -247,7 +254,37 @@ public class AddressBookList {
             case 3:
                 return;
             default:
-                System.out.println("Invalid Option");
+                System.out.println("Invalid Option");               
+        }
+    }
+    public static void sortByOption() {
+        System.out.println("1. By first name");
+        System.out.println("2. By last name");
+        System.out.println("3. By city");
+        System.out.println("4. By state");
+        System.out.println("5. By zip");
+        System.out.println("6. Back");
+        System.out.print("Your choice: ");
+
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+        switch (choice) {
+            case 1:
+                AddressBookList.sortBy(PersonDetail::getFirstName).forEach(System.out::println);
+                break;
+            case 2:
+                AddressBookList.sortBy(PersonDetail::getLastName).forEach(System.out::println);
+                break;
+            case 3:
+                AddressBookList.sortBy(PersonDetail::getCity).forEach(System.out::println);
+                break;
+            case 4:
+                AddressBookList.sortBy(PersonDetail::getState).forEach(System.out::println);
+                break;
+            case 5:
+                return;
+            default:
+                System.out.println("INVALID CHOICE!");
         }
     }
 }

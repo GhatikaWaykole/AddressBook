@@ -13,7 +13,7 @@ public class addressBook {
 
         while (true) {
             System.out.println("\nWelcome to Address Book System");
-            System.out.println("1. New Address Book \n2. Select Address Book \n3. Delete Address Book \n4. Search Contact Data \n5. Exit");
+            System.out.println("1. New Address Book \n2. Select Address Book \n3. Delete Address Book \n4. Search Contact Data \n5. view \6 count the detail \7.Exit");
             System.out.print("Enter Your choice: ");
             int choice = scanner.nextInt();
             scanner.nextLine();
