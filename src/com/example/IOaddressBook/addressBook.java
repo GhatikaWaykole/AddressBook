@@ -1,43 +1,62 @@
 package com.example.IOaddressBook;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class addressBook {
-    public static void choice(int choice,PersonDetail object) {
-        switch (choice) {
-            case 1:
-                object.addContactDetail();            //add a new contact into addressbook
-                break;
-
-            case 2:
-                object.editPersonDetail();                    //edit existing contact
-                break;
-
-            case 3:
-                object.removePersondetail();                //delete the preferred contact
-                break;
-
-            case 4:
-                object.dislay();            //display desired contact
-                break;
-        }
-    }
-    public static void main(String args[]){
-        PersonDetail personDetail= new PersonDetail();
-        HashMap<String,PersonDetail> hashMap = new HashMap<>();
+    public static void main(String args[]) throws IOException {
+        System.out.println("welcome to addressbook program the compute");
         Scanner scanner = new Scanner(System.in);
-       personDetail.addContactDetail();
-       String name ="abcda";
-       hashMap.put(name,personDetail);
-       personDetail.dislay();
-        System.out.println("Enter the addressbook which you want to add into file!!");
-        String AddressBook=scanner.next();
+        File file = new File("C:\\Users\\PC\\IdeaProjects\\AddressBook\\resources\\addressbookIOCompute.txt");
         try {
-            hashMap.get(AddressBook).writeDetail(AddressBook);
+            boolean fileCreate = file.createNewFile();
+            if (fileCreate) {
+                System.out.println("file create properly");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
+        addressbookIOCompute addressbookIOCompute = new addressbookIOCompute();
+        while (true) {
+            System.out.println("Choose what to do");
+            System.out.println("1) Add a person");
+            System.out.println("2) Edit person");
+            System.out.println("3) Delete a person");
+            System.out.println("4) Sort Address Book");
+            System.out.println("5) View person by city or state name");
+            System.out.println("6) Search for person in city or state");
+            System.out.println("7) View All Contacts");
+            System.out.println("8) Exit");
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    addressbookIOCompute.addDetail();
+                    break;
+                case 2:
+                    addressbookIOCompute.editDetail();
+                    break;
+                case 3:
+                    addressbookIOCompute.deltePersonDetail();
+                    break;
+                case 4:
+                    addressbookIOCompute.sorting();
+                    break;
+                case 5:
+                    addressbookIOCompute.viewByCityOrCity();
+                    break;
+                case 6:
+                    addressbookIOCompute.searchByCityOrCity();
+                    break;
+                case 7:
+                    addressbookIOCompute.displayDetail();
+                    break;
+                case 8:
+                    return;
+            }
+        }
     }
-    }
+}
+

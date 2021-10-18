@@ -1,19 +1,19 @@
 package com.example.addressBook;
 
-import java.io.StringReader;
-import java.lang.reflect.Array;
+import com.example.IOaddressBook.addressbookIOCompute;
+
+import java.io.IOException;
 import java.util.*;
-import java.util.Map.Entry;
 
 public class addressBook {
-    public static void main(String args[]) {
+    public static void main(String args[]) throws IOException {
         Scanner scanner = new Scanner(System.in);
         AddressBookList addressBook = new AddressBookList();
         Map<String, AddressBookList> addressBookMap = new HashMap<String, AddressBookList>();
-
+        Map<String,addressBook> addressbookHashmap = new HashMap<>();
         while (true) {
             System.out.println("\nWelcome to Address Book System");
-            System.out.println("1. New Address Book \n2. Select Address Book \n3. Delete Address Book \n4. Search Contact Data \n5. view \6 count the detail \7.Exit");
+            System.out.println("1. New Address Book \n2. Select Address Book \n3. Delete Address Book \n4. Search Contact Data \n5. view \n 6. count the detail \n 7. write detail \n 8. read detail \n 9.Exit");
             System.out.print("Enter Your choice: ");
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -55,6 +55,14 @@ public class addressBook {
                     System.out.println("welcome to the couter");
                     addressBook.countByOption();
                 case 7:
+                    addressbookIOCompute ioCompute = new addressbookIOCompute();
+           //         ioCompute.writeDetail();
+                    break;
+                case 8:
+                    addressbookIOCompute ioCompute1 = new addressbookIOCompute();
+              //      ioCompute1.readDetail();
+                    break;
+                case 9:
                     scanner.close();// for closing the programme
                     return;
                 default:
